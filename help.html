@@ -1,0 +1,1023 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>完整客户端配置 - 帮助页面</title>
+  <style>
+    @font-face {
+      font-family: "MoonlabsSans";
+      src: url("https://platform.claude.com/_next/static/media/01d1396bd69a228a-s.p.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "MoonlabsSans";
+      src: url("https://platform.claude.com/_next/static/media/56139cc7a3934d47-s.p.woff2") format("woff2");
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "MoonlabsHand";
+      src: url("https://platform.claude.com/_next/static/media/8d6f5db32d507c08-s.p.woff2") format("woff2");
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "MoonlabsTypewriter";
+      src: url("https://platform.claude.com/_next/static/media/b8c97ebabd0473a4-s.p.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "MoonlabsTypewriter";
+      src: url("https://platform.claude.com/_next/static/media/fe66948be403232d-s.p.woff2") format("woff2");
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "MoonlabsTypewriter";
+      src: url("https://platform.claude.com/_next/static/media/66b9b5243cec14c0-s.p.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      color-scheme: light;
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --ink: #1c1f26;
+      --muted: #586073;
+      --accent: #4a6bff;
+      --accent-soft: #e9edff;
+      --warning: #ffb100;
+      --border: #e3e6ef;
+      --code-bg: #0f1b2b;
+      --code-ink: #e6f0ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "MoonlabsSans", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.65;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1f2b5c, #4a6bff 65%, #8aa6ff);
+      color: #fff;
+      padding: 56px 8vw 48px;
+    }
+
+    header h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 700;
+    }
+
+    header p {
+      margin: 0;
+      max-width: 780px;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    main {
+      padding: 32px 8vw 64px;
+      display: grid;
+      gap: 32px;
+    }
+
+    section {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 28px 32px;
+      box-shadow: 0 16px 40px rgba(24, 32, 68, 0.08);
+      border: 1px solid var(--border);
+    }
+
+    section h2 {
+      margin-top: 0;
+      font-size: 1.6rem;
+    }
+
+    section h3 {
+      margin-top: 24px;
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+
+    .note {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      padding: 16px 18px;
+      border-radius: 12px;
+      color: var(--ink);
+    }
+
+    .warning {
+      background: #fff7e6;
+      border-left: 4px solid var(--warning);
+      padding: 16px 18px;
+      border-radius: 12px;
+    }
+
+    .code-block {
+      margin: 16px 0 0;
+      background: var(--code-bg);
+      color: var(--code-ink);
+      border-radius: 12px;
+      padding: 18px;
+      overflow: auto;
+      font-family: "MoonlabsTypewriter", "SFMono-Regular", "Menlo", monospace;
+      font-size: 0.92rem;
+    }
+
+    .code-block em {
+      font-family: "MoonlabsTypewriter", "SFMono-Regular", "Menlo", monospace;
+      font-style: italic;
+    }
+
+    .label {
+      display: inline-block;
+      background: #eef1f7;
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 0.85rem;
+      margin-right: 8px;
+    }
+
+    .grid-2 {
+      display: grid;
+      gap: 20px;
+    }
+
+    @media (min-width: 960px) {
+      .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 24px 8vw 48px;
+      font-size: 0.9rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid var(--border);
+      padding: 12px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f3f5fb;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>完整客户端配置</h1>
+    <p>本页面提供了关于客户端配置文件中每一个字段的详细说明，并包含常见示例、注意事项与排错指引，方便你快速完成部署与维护。</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>类型选择：如何理解嵌套配置</h2>
+      <div class="note">
+        <p>注意：在客户端和服务端配置中的多处都有 <strong>“类型选择”</strong> 的配置格式。</p>
+      </div>
+      <div class="code-block">
+<pre>example:
+  type: a
+  a:
+    something: something
+  b:
+    something: something
+  c:
+    something: something</pre>
+      </div>
+      <p><span class="label">说明</span><strong>type</strong> 用于确定使用哪种模式以及解析哪些子字段。在这个例子中，<code>example</code> 字段可以是 <code>a</code>、<code>b</code> 或 <code>c</code>。如果选择了 <code>a</code>，则会解析 <code>a</code> 子字段，而 <code>b</code> 和 <code>c</code> 子字段则会被忽略。</p>
+    </section>
+
+    <section>
+      <h2>服务器地址</h2>
+      <p><strong>server</strong> 字段用于指定客户端应连接到的 Hysteria 服务器地址。地址可以是 <code>host:port</code> 或仅 <code>host</code>。如果省略端口，默认为 <code>443</code>。</p>
+      <p>还可以选择使用 Hysteria 2 URI（<code>hysteria2://</code>）。在这种情况下，由于 URI 已经包括密码和一些其他设置，就不需要再在配置中单独指定它们。</p>
+      <div class="grid-2">
+        <div>
+          <h3>地址</h3>
+          <div class="code-block"><pre>server: example.com</pre></div>
+        </div>
+        <div>
+          <h3>URI</h3>
+          <div class="code-block"><pre>hysteria2://user:password@example.com:443</pre></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>验证</h2>
+      <div class="code-block"><pre>auth: some_password</pre></div>
+      <div class="note">
+        <p>注意： 如果服务器使用 <strong>userpass</strong> 验证，格式必须是 <code>username:password</code>。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>TLS</h2>
+      <div class="code-block">
+<pre>tls:
+  sni: another.example.com
+  insecure: false
+  pinSHA256: BA:88:45:17:A1...
+  ca: custom_ca.crt
+  clientCertificate: client.crt
+  clientKey: client.key</pre>
+      </div>
+    </section>
+
+    <section>
+      <h2>传输 (Transport)</h2>
+      <p><strong>transport</strong> 用于自定义 QUIC 连接使用的底层协议。目前唯一可用的类型是 <code>udp</code>，保留类型选项是为了将来可能添加的其他类型。</p>
+      <div class="code-block">
+<pre>transport:
+  type: udp
+  udp:
+    hopInterval: 30s</pre>
+      </div>
+    </section>
+
+    <section>
+      <h2>混淆</h2>
+      <p>默认 Hysteria 协议伪装为 HTTP/3。如果你的网络针对性屏蔽了 QUIC 或 HTTP/3 流量（但允许其他 UDP 流量），可以使用混淆来解决此问题。目前有一个名为 <strong>“Salamander”</strong> 的混淆实现，将数据包混淆成没有特征的 UDP 包。此功能需要一个混淆密码，密码在客户端和服务端必须相同。</p>
+      <div class="warning">
+        <p>注意： 使用错误的混淆密码将导致无法连接，效果如同服务器没有运行一样。如果遇到连接问题，请先仔细检查混淆密码是否正确。</p>
+      </div>
+      <div class="code-block">
+<pre>obfs:
+  type: salamander
+  salamander:
+    password: cry_me_a_r1ver</pre>
+      </div>
+    </section>
+
+    <section>
+      <h2>QUIC 参数</h2>
+      <div class="code-block">
+<pre>quic:
+  initStreamReceiveWindow: 8388608
+  maxStreamReceiveWindow: 8388608
+  initConnReceiveWindow: 20971520
+  maxConnReceiveWindow: 20971520
+  maxIdleTimeout: 30s
+  keepAlivePeriod: 10s
+  disablePathMTUDiscovery: false
+  sockopts:
+    bindInterface: eth0
+    fwmark: 1234
+    fdControlUnixSocket: ./test.sock</pre>
+      </div>
+      <p>默认的流和连接接收窗口大小分别为 8MB 和 20MB。除非你完全明白自己在做什么，否则不建议修改这些值。如果要改，建议保持流接收窗口与连接接收窗口的比例为 2:5。</p>
+      <div class="note">
+        <p>注意： <code>sockopts</code> 项下的子选项目前仅对出站 QUIC 连接有效，对其它出站连接（例如为解析服务端地址而发送的 DNS 查询）无效。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>带宽</h2>
+      <div class="code-block">
+<pre>bandwidth:
+  up: 100 mbps
+  down: 200 mbps</pre>
+      </div>
+      <p>Hysteria 内置了两套拥塞控制算法（BBR 与 Brutal），使用哪个由是否提供了带宽值决定。 如果希望使用 BBR 而不是 Brutal，可以删除整个 <code>bandwidth</code> 部分。详细信息请参见带宽协商流程与拥塞控制细节。</p>
+      <div class="warning">
+        <p>⚠️ 警告 带宽值并非越大越好，请务必不要超过你当前网络环境所能达到的最大带宽。否则只会适得其反，导致网络拥塞，连接不稳定。</p>
+      </div>
+      <p>客户端的实际上传速度将是这里指定的值，和服务器最大下载速度（如果服务器设置中指定了）中最小的值。同理，客户端的实际下载速度将是这里指定的值，和服务器最大上传速度中最小的值。</p>
+      <p>一个例外是，如果服务器启用了 <code>ignoreClientBandwidth</code> 选项，这里指定的值将被忽略。</p>
+      <h3>支持的单位</h3>
+      <ul>
+        <li>bps 或 b（每秒比特数）</li>
+        <li>kbps 或 kb 或 k（每秒千比特）</li>
+        <li>mbps 或 mb 或 m（每秒兆比特）</li>
+        <li>gbps 或 gb 或 g（每秒吉比特）</li>
+        <li>tbps 或 tb 或 t（每秒太比特）</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>快速打开 (Fast Open)</h2>
+      <p>Fast Open 可以减少每个连接建立时一个 RTT，但代价是 SOCKS5/HTTP 等代理协议的正确语义。当这个选项启用时，客户端总是立即接受一个连接，不先与服务器确认目的地是否可达。如果服务器随后返回失败或拒绝连接，客户端将关闭连接。</p>
+      <div class="code-block"><pre>fastOpen: true</pre></div>
+    </section>
+
+    <section>
+      <h2>懒狗模式 (Lazy)</h2>
+      <p>启用该选项后，客户端只在有传入连接的时候才会连接到服务器。默认行为是在启动时立即连接到服务器。</p>
+      <p>这个选项对于启动后可能长时间没有传入连接的情况，或者刚启动时网络不一定可用的情况很有用。</p>
+      <div class="code-block"><pre>lazy: true</pre></div>
+    </section>
+
+    <section>
+      <h2>代理模式</h2>
+      <p>要使用 Hysteria 客户端，必须至少指定下面中的一个代理模式。</p>
+      <div class="note">
+        <p>提示：从 2.4.1 版本开始，Hysteria 客户端支持单端口同时支持 SOCKS5 和 HTTP 代理，只需在配置文件中同时配置 <code>socks5</code> 和 <code>http</code> 并且 listen 地址完全相同即可。</p>
+      </div>
+
+      <h3>SOCKS5</h3>
+      <p>SOCKS5 代理服务器。支持 TCP 和 UDP。</p>
+      <div class="code-block">
+<pre>socks5:
+  listen: 127.0.0.1:1080
+  username: user
+  password: pass
+  disableUDP: false</pre>
+      </div>
+
+      <h3>HTTP</h3>
+      <p>HTTP 代理服务器。支持 HTTP 和 HTTPS (CONNECT)。</p>
+      <div class="code-block">
+<pre>http:
+  listen: 127.0.0.1:8080
+  username: king
+  password: kong
+  realm: martian</pre>
+      </div>
+
+      <h3>TCP 转发</h3>
+      <p>TCP 转发允许你从服务器（或任何远程主机）向客户端转发一个或多个 TCP 端口。这在某些情况下很有用，比如访问服务器本地或者内网的服务。</p>
+      <div class="code-block">
+<pre>tcpForwarding:
+  - listen: 127.0.0.1:6600
+    remote: 127.0.0.1:6600
+  - listen: 127.0.0.1:6601
+    remote: other.machine.internal:6601</pre>
+      </div>
+
+      <h3>UDP 转发</h3>
+      <p>UDP 转发允许你从服务器（或任何远程主机）向客户端转发一个或多个 UDP 端口。这在某些情况下很有用，比如访问服务器本地或者内网的服务。</p>
+      <div class="code-block">
+<pre>udpForwarding:
+  - listen: 127.0.0.1:5300
+    remote: 127.0.0.1:5300
+    timeout: 20s
+  - listen: 127.0.0.1:5301
+    remote: other.machine.internal:5301
+    timeout: 20s</pre>
+      </div>
+
+      <h3>TCP TProxy (Linux)</h3>
+      <p>TPROXY（透明代理）是一个仅限 Linux 的特性，允许透明代理 TCP 连接。详细信息请参阅配置 TPROXY。</p>
+      <div class="code-block"><pre>tcpTProxy:
+  listen: :2500</pre></div>
+
+      <h3>UDP TProxy (Linux)</h3>
+      <p>TPROXY（透明代理）是一个仅限 Linux 的特性，允许透明代理 UDP 连接。详细信息请参阅配置 TPROXY。</p>
+      <div class="code-block"><pre>udpTProxy:
+  listen: :2500
+  timeout: 20s</pre></div>
+
+      <h3>TCP Redirect (Linux)</h3>
+      <p>REDIRECT 本质上是一种特殊的 DNAT，目标地址是本机。这种方法早于 TPROXY，是实现 TCP 透明代理的一种较旧方式。如果你的内核支持 TPROXY，我们建议使用 TPROXY 来代替 REDIRECT。</p>
+      <div class="code-block"><pre>tcpRedirect:
+  listen: :3500</pre></div>
+      <p><strong>示例：</strong></p>
+      <div class="code-block">
+<pre>iptables -t nat -N HYSTERIA
+iptables -t nat -A HYSTERIA -d 0.0.0.0/8 -j RETURN
+iptables -t nat -A HYSTERIA -d 10.0.0.0/8 -j RETURN
+iptables -t nat -A HYSTERIA -d 127.0.0.0/8 -j RETURN
+iptables -t nat -A HYSTERIA -d 169.254.0.0/16 -j RETURN
+iptables -t nat -A HYSTERIA -d 172.16.0.0/12 -j RETURN
+iptables -t nat -A HYSTERIA -d 192.168.0.0/16 -j RETURN
+iptables -t nat -A HYSTERIA -d 224.0.0.0/4 -j RETURN
+iptables -t nat -A HYSTERIA -d 240.0.0.0/4 -j RETURN
+iptables -t nat -A HYSTERIA -p tcp -j REDIRECT --to-ports 3500
+iptables -t nat -A OUTPUT -p tcp -j HYSTERIA
+iptables -t nat -A PREROUTING -p tcp -j HYSTERIA
+
+ip6tables -t nat -N HYSTERIA
+ip6tables -t nat -A HYSTERIA ! -d 2000::/3 -j RETURN
+ip6tables -t nat -A HYSTERIA -p tcp -j REDIRECT --to-ports 3500
+ip6tables -t nat -A OUTPUT -p tcp -j HYSTERIA
+ip6tables -t nat -A PREROUTING -p tcp -j HYSTERIA</pre>
+      </div>
+    </section>
+
+    <section>
+      <h2>TUN</h2>
+      <p>TUN 是一个跨平台的透明代理解决方案，在系统中创建虚拟网卡，利用系统路由功能来捕获及重定向流量。目前兼容 Windows、Linux 和 macOS 平台。</p>
+      <p>不同于常规的三层 VPN 技术（如 WireGuard 和 OpenVPN），Hysteria 的 TUN 模式只能处理 TCP 和 UDP 流量，不支持 ICMP 等其它协议（这意味着不支持 ping 等操作）。其会完全接管 TCP 协议栈以加速 TCP 连接。</p>
+      <p>与 Hysteria 1 的 TUN 实现相比，Hysteria 2 的 TUN 基于 sing-tun 的 “system” 栈，需要在虚拟网卡上配置一个 /30 的 IPv4 地址和一个 /126 的 IPv6 地址。Hysteria 会自动完成网卡、地址和路由规则的配置。</p>
+      <div class="note">
+        <p>注意： <code>ipv4Exclude</code>/<code>ipv6Exclude</code> 对于避免形成路由环路非常重要。请见这两个字段的注释以了解更多信息。</p>
+      </div>
+      <div class="code-block">
+<pre>tun:
+  name: "hytun"
+  mtu: 1500
+  timeout: 5m
+  address:
+    ipv4: 100.100.100.101/30
+    ipv6: 2001::ffff:ffff:ffff:fff1/126
+  route:
+    ipv4: [0.0.0.0/0]
+    ipv6: ["2000::/3"]
+    ipv4Exclude: [192.0.2.1/32]
+    ipv6Exclude: ["2001:db8::1/128"]</pre>
+      </div>
+      <div class="code-block"><pre>sysctl net.ipv4.conf.default.rp_filter=2
+sysctl net.ipv4.conf.all.rp_filter=2</pre></div>
+
+      <h3>已知的兼容性问题</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>操作系统</th>
+            <th>问题</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>macOS</td>
+            <td>TUN 接口的名称必须是 utun+数字，例如 utun123。</td>
+          </tr>
+          <tr>
+            <td>Windows Server 2022</td>
+            <td>需要禁用防火墙才能正常使用。</td>
+          </tr>
+          <tr>
+            <td>CentOS 7</td>
+            <td>需要禁用防火墙才能正常使用。</td>
+          </tr>
+          <tr>
+            <td>Linux 内核 &lt; 4.17</td>
+            <td>自动添加的路由规则将无法正常工作（原因）。可升级内核或在客户端启动后执行：<br />
+              <code>ip rule del from all goto 9010; ip -6 rule del from all goto 9010</code></td>
+          </tr>
+          <tr>
+            <td>FreeBSD</td>
+            <td>无法使用，不被 sing-tun 支持。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>ACME DNS 配置</h2>
+      <p>ACME DNS 可以实现通过 DNS 服务商 API 来获取证书，该功能不依赖特定端口（不占用 80/443）和外部访问。</p>
+      <h3>服务商支持</h3>
+      <p>目前 ACME DNS 配置仅支持几个流行的 DNS 服务商，以下为配置样例。注意：以下文档仅列出每个 DNS 服务商的配置选项，由于开发资源有限，配置选项应填写的值需要用户自行查找，我们仅测试了 Cloudflare 配置。</p>
+
+      <h3>Cloudflare</h3>
+      <div class="code-block">
+<pre>acme:
+  domains:
+    - "*.example.com"
+  email: your@email.address
+  type: dns
+  dns:
+    name: cloudflare
+    config:
+      cloudflare_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP</pre>
+      </div>
+
+      <h3>Duck DNS</h3>
+      <div class="code-block">
+<pre>acme:
+  domains:
+    - "*.example.com"
+  email: your@email.address
+  type: dns
+  dns:
+    name: duckdns
+    config:
+      duckdns_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
+      duckdns_override_domain: abc.example.com</pre>
+      </div>
+
+      <h3>Gandi.net</h3>
+      <div class="code-block">
+<pre>acme:
+  domains:
+    - "*.example.com"
+  email: your@email.address
+  type: dns
+  dns:
+    name: gandi
+    config:
+      gandi_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP</pre>
+      </div>
+
+      <h3>Godaddy</h3>
+      <div class="code-block">
+<pre>acme:
+  domains:
+    - "*.example.com"
+  email: your@email.address
+  type: dns
+  dns:
+    name: godaddy
+    config:
+      godaddy_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP</pre>
+      </div>
+
+      <h3>Name.com</h3>
+      <div class="code-block">
+<pre>acme:
+  domains:
+    - "*.example.com"
+  email: your@email.address
+  type: dns
+  dns:
+    name: namedotcom
+    config:
+      namedotcom_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
+      namedotcom_user: user
+      namedotcom_server: api.name.com</pre>
+      </div>
+
+      <h3>Vultr</h3>
+      <div class="code-block">
+<pre>acme:
+  domains:
+    - "*.example.com"
+  email: your@email.address
+  type: dns
+  dns:
+    name: vultr
+    config:
+      vultr_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP</pre>
+      </div>
+
+      <h3>域名匹配</h3>
+      <p>目前 ACME DNS 配置针对 <code>domains</code> 内所有域名生效，也就是说如果使用 ACME DNS 申请证书，请保证 <code>domains</code> 内所有域名都使用同一个域名服务商。</p>
+
+      <h3>未支持的服务商</h3>
+      <p>如果您正在使用当前尚未支持的 DNS 服务商，您仍然可以将域名的 DNS 管理服务器指向已支持的服务商（例如 Cloudflare）。这意味着：您可以在 A 服务商购买域名并通过 B 服务商管理，这样就仍然可以使用 ACME DNS 功能。</p>
+    </section>
+
+    <section>
+      <h2>ACL</h2>
+      <p>ACL 是 Hysteria 服务端中一个非常强大的功能，可以用来自定义处理客户端请求的方式，往往配合出站规则（outbounds）使用。例如，可以使用 ACL 来屏蔽某些地址，或者针对不同网站使用不同的出口。</p>
+
+      <h3>语法</h3>
+      <p>一个有效的 ACL 规则必须符合以下格式之一：</p>
+      <div class="code-block">
+<pre>outbound(address)
+outbound(address, proto/port)
+outbound(address, proto/port, hijack_address)
+# 这是一条注释</pre>
+      </div>
+
+      <h3>地址类型</h3>
+      <ul>
+        <li>单一 IPv4/IPv6 地址，例如 <code>1.1.1.1</code> 或 <code>2606:4700:4700::1111</code></li>
+        <li>IPv4/IPv6 CIDR，例如 <code>73.0.0.0/8</code> 或 <code>2001:db8::/32</code></li>
+        <li>域名，例如 <code>example.com</code>（不包括子域名）</li>
+        <li>通配域名，例如 <code>*.example.com</code> 或 <code>*.google.*</code></li>
+        <li>域名后缀，例如 <code>suffix:example.com</code>（匹配 example.com 及其所有子域名）</li>
+        <li>GeoIP 国家代码，例如 <code>geoip:cn</code> 或 <code>geoip:us</code></li>
+        <li>GeoSite 分类，例如 <code>geosite:netflix</code> 或 <code>geosite:google</code>（支持标签，例如 <code>geosite:google@cn</code>）</li>
+        <li><code>all</code> - 匹配所有地址。通常放在最后作为其他所有连接的默认出站规则。</li>
+      </ul>
+      <p>要查看可用的 GeoSite 分类，可以参考这里：</p>
+      <ul>
+        <li><a href="https://github.com/Loyalsoldier/v2ray-rules-dat">https://github.com/Loyalsoldier/v2ray-rules-dat</a></li>
+        <li><a href="https://github.com/v2fly/domain-list-community/tree/master/data">https://github.com/v2fly/domain-list-community/tree/master/data</a></li>
+      </ul>
+
+      <h3>Proto/port</h3>
+      <ul>
+        <li><code>tcp</code> 或 <code>tcp/*</code> - 匹配所有 TCP 端口</li>
+        <li><code>udp</code> 或 <code>udp/*</code> - 匹配所有 UDP 端口</li>
+        <li><code>tcp/80</code> - 匹配 TCP 端口 80</li>
+        <li><code>udp/53</code> - 匹配 UDP 端口 53</li>
+        <li><code>udp/20000-30000</code> - 匹配 UDP 端口 20000 到 30000</li>
+        <li><code>*/443</code> - 匹配 TCP 和 UDP 端口 443</li>
+        <li><code>*</code>、<code>*/*</code> 或省略 - 匹配所有协议和所有端口</li>
+      </ul>
+
+      <h3>劫持地址 (Hijack address)</h3>
+      <p>当指定了劫持地址时，匹配此规则的连接将被劫持到指定的地址。劫持地址必须是 IPv4/IPv6 地址，不能是域名。</p>
+
+      <h3>匹配行为</h3>
+      <h4>域名和 IP 匹配</h4>
+      <p>当处理基于域名的请求时，Hysteria 首先会解析该域名，然后尝试匹配域名和 IP 规则。换句话说，基于 IP 地址的规则将适用于所有最终指向该 IP 的连接，无论客户端请求是用的域名还是 IP。</p>
+      <h4>规则顺序</h4>
+      <p>规则保证按从上到下的顺序进行匹配。使用第一个匹配请求的规则。如果没有规则匹配，将使用默认出站（出站列表中的第一个）。</p>
+
+      <h3>内置出站</h3>
+      <p>除非在出站列表中明确地进行了覆盖（同名），否则 Hysteria 内置以下出站：</p>
+      <ul>
+        <li><strong>direct</strong> - 使用默认配置（auto，无绑定）的本地出站</li>
+        <li><strong>reject</strong> - 拒绝连接</li>
+        <li><strong>default</strong> - 使用出站列表中的第一个出站；如果列表为空，等同于 direct</li>
+      </ul>
+
+      <h3>示例</h3>
+      <div class="code-block">
+<pre>outbounds:
+  - name: v4_only
+    type: direct
+    direct:
+      mode: 4
+  - name: v6_only
+    type: direct
+    direct:
+      mode: 6
+  - name: some_proxy
+    type: socks5
+    socks5:
+      addr: ohno.moe:1080
+
+# 为 Google 使用 v6_only 出站
+v6_only(suffix:google.com)
+
+# 为 Twitter 使用 v4_only 出站
+v4_only(suffix:twitter.com)
+
+# 为 ipinfo.io 使用 some_proxy 出站
+some_proxy(ipinfo.io)
+
+# 也支持非英语 IDN 域名
+v6_only(战狼*.中国)
+
+# 屏蔽 QUIC 协议
+reject(all, udp/443)
+
+# 屏蔽 SMTP 协议
+reject(all, tcp/25)
+
+# 屏蔽中国和朝鲜
+reject(geoip:cn)
+reject(geoip:kp)
+
+# 屏蔽 Facebook 和 Google Ads
+reject(geosite:facebook)
+reject(geosite:google@ads)
+
+# 屏蔽一些 IP 范围
+reject(73.0.0.0/8)
+reject(2601::/20)
+
+# 将 8.8.8.8 劫持到 1.1.1.1 并使用默认（第一个）出站
+default(8.8.8.8, *, 1.1.1.1)
+
+# 将 8.8.4.4 劫持到 1.1.1.1 并使用默认（第一个）出站，但仅限 UDP 53
+default(8.8.4.4, udp/53, 1.1.1.1)
+
+# 直连所有其他地址
+direct(all)</pre>
+      </div>
+
+      <p>注意： ACL 也可以不配合出站规则单独使用。无论有没有出站列表，内置出站都会存在。例如，可以单纯通过 reject 屏蔽一些地址。</p>
+      <div class="code-block">
+<pre>reject(geoip:cn)
+reject(geosite:facebook)
+reject(10.0.0.0/8)
+reject(172.16.0.0/12)
+reject(192.168.0.0/16)
+reject(fc00::/7)</pre>
+      </div>
+    </section>
+
+    <section>
+      <h2>流量统计 API</h2>
+      <p>如果配置中设置了 API secret，调用时需要在请求头加上 <code>Authorization</code> 标头。</p>
+      <h3>请求</h3>
+      <div class="code-block"><pre>curl -H 'Authorization: secret' http://ip:port/path</pre></div>
+
+      <h3>GET /traffic</h3>
+      <p>此接口返回一个 JSON map，是每个用户的流量信息。</p>
+      <div class="code-block">
+<pre>{
+  "wang": {
+    "tx": 514,
+    "rx": 4017
+  },
+  "joe": {
+    "tx": 7790,
+    "rx": 446623
+  }
+}</pre>
+      </div>
+      <p>还可以使用参数 <code>clear</code> 在返回统计数据后将其清零：</p>
+      <div class="code-block"><pre>/traffic?clear=1</pre></div>
+
+      <h3>POST /kick</h3>
+      <p>此接口可以提交一个要踢下线的用户列表。</p>
+      <div class="code-block"><pre>["wang", "joe"]</pre></div>
+      <div class="note">
+        <p>注意： 由于客户端内置了重连逻辑，被踢出后将尝试重新连接。为了避免需要反复踢出同一个用户，应该同时在验证后端中屏蔽该用户。</p>
+      </div>
+
+      <h3>GET /online</h3>
+      <p>此接口返回一个 JSON map，是当前在线的用户与其对应的连接数。这里的连接数指的是 Hysteria 客户端实例的数量（可以理解为设备数），而非代理连接数。</p>
+      <div class="code-block">
+<pre>{
+  "wang": 2,
+  "joe": 1
+}</pre>
+      </div>
+
+      <h3>GET /dump/streams</h3>
+      <p>此接口返回一个 JSON 对象，反映当前由 Hysteria 代理的 TCP 流的详细信息。</p>
+      <div class="code-block">
+<pre>{
+  "streams": [
+    {
+      "state": "estab",
+      "auth": "user",
+      "connection": 3191736581,
+      "stream": 4,
+      "req_addr": "192.0.2.1:80",
+      "hooked_req_addr": "example.com:80",
+      "tx": 3937,
+      "rx": 4441,
+      "initial_at": "2024-11-08T16:07:45.956956773+09:00",
+      "last_active_at": "2024-11-08T16:07:47.121503203+09:00"
+    }
+  ]
+}</pre>
+      </div>
+      <p>在请求这个 API 时，如果在请求头中额外加上 <code>Accept: text/plain</code>，可以获得类似于 <code>ss -atn</code> 的人类可读输出。</p>
+      <div class="code-block">
+<pre>State    Auth           Connection   Stream     TX-Bytes     RX-Bytes     Lifetime  Last-Active Req-Addr         Hooked-Req-Addr
+ESTAB    user             BE3E0905        4         3937         4441       3.005s        1.84s 192.0.2.1:80     example.com:80</pre>
+      </div>
+    </section>
+
+    <section>
+      <h2>配置 TPROXY</h2>
+      <p>TProxy 是仅在 Linux 上可用的一种透明代理，它同时支持 TCP 和 UDP。</p>
+
+      <h3>避免环路</h3>
+      <p>如果不需要代理本机（运行 Hysteria 客户端的设备自身）的流量，则可跳过此章节。在需要代理本机流量的情况下，为了避免 Hysteria 的流量出现环路，我们应该将 Hysteria 自身的流量与被代理的流量区分开，最佳的方式是使用专用的用户运行 Hysteria 客户端，然后在 iptables 或 nftables 中使用基于用户的匹配。</p>
+      <p>我们也建议一键安装脚本以及 Linux 发行版打包时使用专用用户执行 Hysteria，并参考这个章节进行配置。</p>
+
+      <h3>创建专用于运行 Hysteria 客户端的用户</h3>
+      <div class="code-block"><pre>useradd --system hysteria</pre></div>
+
+      <h3>配置 capabilities</h3>
+      <div class="code-block"><pre>setcap CAP_NET_ADMIN,CAP_NET_BIND_SERVICE+ep /path/to/hysteria</pre></div>
+      <p>每次手动更新 Hysteria 客户端后都需要执行此操作。</p>
+
+      <h3>使用专用用户启动 Hysteria</h3>
+      <div class="code-block"><pre>sudo -u hysteria /path/to/hysteria -c config.yaml</pre></div>
+      <p>或者，如果使用 systemd 管理 Hysteria 服务，也可以在这个服务的 systemd 配置中的 [Service] 下添加 <code>User=hysteria</code>。</p>
+
+      <h3>配置客户端</h3>
+      <p>在之后的示例中，我们将使用 <code>2500</code> 作为 TProxy 的监听端口，你也可以换用其他端口。</p>
+      <div class="code-block">
+<pre>tcpTProxy:
+    listen: :2500
+
+udpTProxy:
+    listen: :2500</pre>
+      </div>
+
+      <h3>配置路由规则</h3>
+      <p>这个步骤不可省略。请勿遗漏这个步骤，否则 TProxy 将不会工作。每次开机都需要执行这些命令，除非进行持久化。</p>
+      <div class="code-block">
+<pre># IPv4
+ip rule add fwmark 0x1 lookup 100
+ip route add local default dev lo table 100
+
+# IPv6
+ip -6 rule add fwmark 0x1 lookup 100
+ip -6 route add local default dev lo table 100</pre>
+      </div>
+
+      <h3>配置 iptables 或者 nftables</h3>
+      <p>每次开机都需要执行这些命令，除非进行持久化。</p>
+      <div class="code-block">
+<pre>iptables -t mangle -N HYSTERIA
+
+# 跳过已经由 TProxy 接管的流量
+iptables -t mangle -A HYSTERIA -p tcp -m socket --transparent -j MARK --set-mark 0x1
+iptables -t mangle -A HYSTERIA -p udp -m socket --transparent -j MARK --set-mark 0x1
+iptables -t mangle -A HYSTERIA -m socket -j RETURN
+
+# 绕过私有和特殊 IPv4 地址
+iptables -t mangle -A HYSTERIA -d 0.0.0.0/8 -j RETURN
+iptables -t mangle -A HYSTERIA -d 10.0.0.0/8 -j RETURN
+iptables -t mangle -A HYSTERIA -d 127.0.0.0/8 -j RETURN
+iptables -t mangle -A HYSTERIA -d 169.254.0.0/16 -j RETURN
+iptables -t mangle -A HYSTERIA -d 172.16.0.0/12 -j RETURN
+iptables -t mangle -A HYSTERIA -d 192.168.0.0/16 -j RETURN
+iptables -t mangle -A HYSTERIA -d 224.0.0.0/4 -j RETURN
+iptables -t mangle -A HYSTERIA -d 240.0.0.0/4 -j RETURN
+
+# 重定向流量到 TProxy 端口
+iptables -t mangle -A HYSTERIA -p tcp -j TPROXY --on-port 2500 --on-ip 127.0.0.1 --tproxy-mark 0x1
+iptables -t mangle -A HYSTERIA -p udp -j TPROXY --on-port 2500 --on-ip 127.0.0.1 --tproxy-mark 0x1
+
+# 启用上述规则
+iptables -t mangle -A PREROUTING -j HYSTERIA
+
+# === 代理本机流量 - 开始 ===
+
+iptables -t mangle -N HYSTERIA_MARK
+
+# 通过匹配用户来避免环路
+iptables -t mangle -A HYSTERIA_MARK -m owner --uid-owner hysteria -j RETURN
+
+# 绕过局域网和特殊 IPv4 地址
+iptables -t mangle -A HYSTERIA_MARK -d 0.0.0.0/8 -j RETURN
+iptables -t mangle -A HYSTERIA_MARK -d 10.0.0.0/8 -j RETURN
+iptables -t mangle -A HYSTERIA_MARK -d 127.0.0.0/8 -j RETURN
+iptables -t mangle -A HYSTERIA_MARK -d 169.254.0.0/16 -j RETURN
+iptables -t mangle -A HYSTERIA_MARK -d 172.16.0.0/12 -j RETURN
+iptables -t mangle -A HYSTERIA_MARK -d 192.168.0.0/16 -j RETURN
+iptables -t mangle -A HYSTERIA_MARK -d 224.0.0.0/4 -j RETURN
+iptables -t mangle -A HYSTERIA_MARK -d 240.0.0.0/4 -j RETURN
+
+# 重路由 OUTPUT 链流量到 PREROUTING 链
+iptables -t mangle -A HYSTERIA_MARK -p tcp -j MARK --set-mark 0x1
+iptables -t mangle -A HYSTERIA_MARK -p udp -j MARK --set-mark 0x1
+
+# 启用上述规则
+iptables -t mangle -A OUTPUT -j HYSTERIA_MARK
+
+# === 代理本机流量 - 结束 ===</pre>
+      </div>
+    </section>
+
+    <section>
+      <h2>端口跳跃</h2>
+      <p>中国用户有时报告运营商会阻断或限速 UDP 连接。不过，这些限制往往仅限单个端口。端口跳跃可用作此情况的解决方法。</p>
+
+      <h3>客户端</h3>
+      <div class="code-block">
+<pre>example.com:1234,5678,9012
+example.com:20000-50000
+example.com:1234,5000-6000,7044,8000-9000</pre>
+      </div>
+      <p>可指定的端口数量没有限制。客户端将随机选择一个端口进行初始连接，并定期随机跳跃到另一个端口。用于控制时间间隔的选项是 transport 部分中的 <code>hopInterval</code>：</p>
+      <div class="code-block">
+<pre>transport:
+  udp:
+    hopInterval: 30s</pre>
+      </div>
+      <p>假设服务器确实在所有指定的端口上可达，跳跃过程对上层应用是透明的，不会导致数据丢失/连接断开。</p>
+
+      <h3>服务器</h3>
+      <p>Hysteria 服务端并不能同时监听多个端口，因此不能在服务器端使用上面的格式作为监听地址。建议配合 iptables 或 nftables 的 DNAT 将端口转发到服务器的监听端口。</p>
+      <div class="code-block">
+<pre># IPv4
+iptables -t nat -A PREROUTING -i eth0 -p udp --dport 20000:50000 -j REDIRECT --to-ports 443
+# IPv6
+ip6tables -t nat -A PREROUTING -i eth0 -p udp --dport 20000:50000 -j REDIRECT --to-ports 443</pre>
+      </div>
+      <p>在这个示例中，服务器监听 443 端口，但客户端可以通过 20000-50000 范围内的任何端口连接。</p>
+    </section>
+
+    <section>
+      <h2>速度测试</h2>
+      <p>Hysteria（自 2.3.0 版本起）内置了一个速度测试工具，允许客户端与服务器进行下载和上传测速，前提是服务器在其配置中启用了速度测试支持。</p>
+
+      <h3>默认配置 (config.yaml)</h3>
+      <div class="code-block"><pre>./hysteria-linux-amd64-avx speedtest</pre></div>
+      <p>注意：测速工具像正常代理模式一样，依然会遵守你在配置文件中的带宽设置。如果使用了 Brutal 拥塞控制，它不会为你探测带宽。</p>
+
+      <h3>Usage</h3>
+      <div class="code-block">
+<pre>hysteria speedtest [flags]
+
+Flags:
+      --data-size uint32   Data size for download and upload tests (default 104857600)
+  -h, --help               help for speedtest
+      --skip-download      Skip download test
+      --skip-upload        Skip upload test
+      --use-bytes          Use bytes per second instead of bits per second</pre>
+      </div>
+      <p>速度测试连接由服务器内部处理，因此不受 ACL 和出站规则等的影响。但是速度测试产生的流量仍会计入该用户的流量统计中。</p>
+    </section>
+
+    <section>
+      <h2>性能优化</h2>
+      <p>以下是影响传输速度的常见因素：</p>
+      <ul>
+        <li>客户端与服务器之间的连接质量</li>
+        <li>CPU、网卡等的处理能力</li>
+        <li>系统缓冲区大小</li>
+        <li>流控制接收窗口大小</li>
+        <li>进程优先级</li>
+      </ul>
+      <p>QUIC 作为一种更新、更复杂、在用户态执行的协议，自然会比成熟、高度优化的内核 TCP 实现需要更多的处理能力。如果想提高传输速度，不要运行在树莓派或极便宜的 VPS 上。</p>
+
+      <h3>系统缓冲区大小</h3>
+      <p>Linux</p>
+      <div class="code-block"><pre># 将发送、接收两个缓冲区都设置为 16 MB
+sysctl -w net.core.rmem_max=16777216
+sysctl -w net.core.wmem_max=16777216</pre></div>
+      <p>BSD/macOS</p>
+      <div class="code-block"><pre>sysctl -w kern.ipc.maxsockbuf=20971520
+sysctl -w net.inet.udp.recvspace=16777216
+# BSD 上不存在 UDP 发送缓冲区，因此没有 "sendspace" 可设置</pre></div>
+
+      <h3>流控制接收窗口大小</h3>
+      <div class="code-block">
+<pre>quic:
+  initStreamReceiveWindow: 26843545
+  maxStreamReceiveWindow: 26843545
+  initConnReceiveWindow: 67108864
+  maxConnReceiveWindow: 67108864</pre>
+      </div>
+      <p>可以根据你的使用情景提高或者降低这些值。强烈建议保持接近 2/5 的流/连接接收窗口比例，这样可以防止一个或两个阻塞的流卡死整个连接。</p>
+
+      <h3>进程优先级</h3>
+      <p>在 CPU 资源紧缺的设备上，高负载下可能会出现延迟抖动，可通过提高进程优先级来缓解。</p>
+
+      <h4>通过 systemd（适用于 Linux）</h4>
+      <p>创建 <code>/etc/systemd/system/hysteria-server.service.d/priority.conf</code> 并填入以下内容：</p>
+      <div class="code-block">
+<pre>[Service]
+CPUSchedulingPolicy=rr
+CPUSchedulingPriority=99</pre>
+      </div>
+      <p>使用以下命令重载 systemd 配置文件并重启服务：</p>
+      <div class="code-block">
+<pre>systemctl daemon-reload
+systemctl restart hysteria-server.service</pre>
+      </div>
+
+      <h4>通过 chrt（适用于 Linux 和 FreeBSD）</h4>
+      <p>在 FreeBSD 上需安装 util-linux 且最高优先级为 31 而不是 99。</p>
+      <div class="code-block">
+<pre># 在每次服务启动之后执行
+chrt -r 99 $(pidof hysteria)
+
+# 或者，使用下面的命令启动服务
+chrt -r 99 hysteria server -c /path/to/config.yaml</pre>
+      </div>
+    </section>
+
+    <section>
+      <h2>故障排除</h2>
+      <h3>failed to initialize client (connect error: timeout: no recent network activity)</h3>
+      <p>客户端无法连接到服务器。最常见的原因有：</p>
+      <ul>
+        <li>服务器没有运行</li>
+        <li>端口被防火墙阻塞（除了系统，许多提供商在面板中有单独的防火墙设置）</li>
+        <li>服务器在不同的地址或端口上运行</li>
+        <li>服务器监听的网络对客户端不可访问</li>
+        <li>域名没有解析到正确的 IP 地址</li>
+        <li>混淆设置不正确</li>
+        <li>服务端 Linux 内核版本太旧（不建议使用 CentOS 7）</li>
+      </ul>
+
+      <h3>failed to initialize client (authentication error, HTTP status code: 404)</h3>
+      <p>客户端被服务器拒绝。最常见的原因有：</p>
+      <ul>
+        <li>密码不正确</li>
+        <li>连接到了错误的服务器</li>
+        <li>服务器的验证设置配置错误</li>
+      </ul>
+
+      <h3>failed to initialize client (connect error: CRYPTO_ERROR 0x12a (local): tls: failed to verify certificate: x509: certificate signed by unknown authority)</h3>
+      <p>客户端认为服务器的证书无效。最常见的原因有：</p>
+      <ul>
+        <li>服务器使用了自签名证书，而你没有将其添加到客户端的受信任的 CA 中，或没有使用 insecure 选项。</li>
+        <li>系统的信任 CA 中缺少签署服务器证书的 CA。</li>
+        <li>你正被中间人攻击（man-in-the-middle attack）。</li>
+      </ul>
+
+      <h3>failed to load server config (invalid config: listen: listen udp :443: bind: permission denied)</h3>
+      <p>服务器没有权限绑定到指定的端口。可以执行以下操作之一：</p>
+      <ul>
+        <li>以 root 用户身份运行</li>
+        <li>给可执行文件 cap_net_bind_service 能力：<code>sudo setcap cap_net_bind_service=+ep ./hysteria-linux-amd64-avx</code></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Moonlabs · Hysteria 客户端完整配置说明</p>
+  </footer>
+</body>
+</html>
